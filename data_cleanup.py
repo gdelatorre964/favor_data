@@ -28,7 +28,6 @@ lm_store_num_dict = ['#L1', '#L2', '#L3', '#L4', '#L5']
 total_store_num_dict = bm_store_num_dict + lm_store_num_dict
 
 details = pd.read_csv(details)
-# details = details.fillna('-')
 details = details.drop(details.columns[0:3], axis=1)
 details['Name and Location'] = details['Name and Location'].replace(location_dict, regex=True)
 details['Items Cost'] = details['Items Cost'].str.replace('$', '')
@@ -86,7 +85,6 @@ Total_sales = np.concatenate((BM_revs, LM_revs))
 
 number_of_orders = pd.read_csv(number_of_orders)
 number_of_orders = number_of_orders.loc[0][0]
-# number_of_orders = float((number_of_orders.strip('$')).replace(',', ''))
 number_of_orders = float(number_of_orders)
 
 revenue_number = pd.read_csv(revenue_number)
