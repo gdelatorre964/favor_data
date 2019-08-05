@@ -15,34 +15,34 @@ zero out the revenue in the store column
 fig1 = plt.pie(BM_orders, labels=bm_store_num_dict, autopct='%1.1f%%', textprops={'fontsize': 12})
 plt.title('BM Orders')
 plt.savefig('Figure_1.png')
-plt.show()
+
 
 fig2 = plt.pie(LM_orders, labels=lm_store_num_dict, autopct='%1.1f%%', textprops={'fontsize': 12})
 plt.title('LM Orders')
 plt.savefig('Figure_2.png')
-plt.show()
+
 
 # change the pie chart to a bar graph for cleaner representation
 fig3 = plt.bar(total_store_num_dict, Total_orders)
 plt.title('Total Orders')
 plt.savefig('Figure_3.png')
-plt.show()
+
 
 fig4 = plt.pie(BM_revs, labels=bm_store_num_dict, autopct='%1.1f%%', textprops={'fontsize': 12})
 plt.title('BM Sales')
 plt.savefig('Figure_4.png')
-plt.show()
+
 
 fig5 = plt.pie(LM_revs, labels=lm_store_num_dict, autopct='%1.1f%%', textprops={'fontsize': 12})
 plt.title('LM Sales')
 plt.savefig('Figure_5.png')
-plt.show()
+
 
 # change the pie chart to a bar graph for cleaner representation
 fig6 = plt.bar(total_store_num_dict, Total_sales)
 plt.title('Total Sales')
 plt.savefig('Figure_6.png')
-plt.show()
+
 
 pdf = FPDF(orientation='L')
 pdf.add_page()
