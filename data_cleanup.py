@@ -6,25 +6,10 @@ number_of_orders = 'total_orders.csv'
 orders_per_store = 'orders.csv'
 revenue_number = 'total_revenue.csv'
 revenue_per_store = 'revenue.csv'
-location_dict = {
-    "Name and Location": "Date",
-    "Bill Miller BBQ - 136 West Slaughter Lane": "#64",
-    "Bill Miller BBQ - 14718 North Interstate 35 Frontage Road": "#19",
-    "Bill Miller BBQ - 1646 Main Street #3393": "#65",
-    "Bill Miller BBQ - 1651 West Whitestone Boulevard": "#21",
-    "Bill Miller BBQ - 709 East Ben White Boulevard": "#16",
-    "Bill Miller BBQ - 8103 Burnet Road": "#17",
-    "Bill Miller BBQ - 8700 U.S. 290": "#35",
-    "Laguna Madre Seafood Company - 5123 Rigsby Avenue": "#L1",
-    "Laguna Madre Seafood Company - 402 Southwest Military Drive": "#L2",
-    "Laguna Madre Seafood Company - 10614 Westover Hills Boulevard": "#L3",
-    "Laguna Madre Seafood Company - 18195 U.S. 281": "#L4",
-    "Laguna Madre Seafood Company - 25127 Interstate 10": "#L5"
-}
-convert_dict = {'Date': str, '#64': float, '#19': float, '#65': float, '#21': float, '#16': float, '#17': float,
-                '#35': float, '#L1': float, '#L2': float, '#L3': float, '#L4': float, '#L5': float}
-bm_store_num_dict = ['#64', '#19', '#65', '#21', '#16', '#17', '#35']
-lm_store_num_dict = ['#L1', '#L2', '#L3', '#L4', '#L5']
+location_dict = {}
+convert_dict = {}
+bm_store_num_dict = []
+lm_store_num_dict = []
 total_store_num_dict = bm_store_num_dict + lm_store_num_dict
 
 details = pd.read_csv(details)
@@ -57,19 +42,7 @@ orders_per_store = orders_per_store.astype(convert_dict)
 revenue_per_store = pd.read_csv(revenue_per_store)
 revenue_per_store = revenue_per_store.drop(revenue_per_store.index[0])
 revenue_per_store = revenue_per_store.rename(index=str, columns=location_dict)
-revenue_per_store['#64'] = revenue_per_store['#64'].str.replace('$', '')
-revenue_per_store['#19'] = revenue_per_store['#19'].str.replace('$', '')
-revenue_per_store['#65'] = revenue_per_store['#65'].str.replace('$', '')
-revenue_per_store['#21'] = revenue_per_store['#21'].str.replace('$', '')
-revenue_per_store['#16'] = revenue_per_store['#16'].str.replace('$', '')
-revenue_per_store['#17'] = revenue_per_store['#17'].str.replace('$', '')
-revenue_per_store['#35'] = revenue_per_store['#35'].str.replace('$', '')
-revenue_per_store['#L3'] = revenue_per_store['#L3'].str.replace('$', '')
-revenue_per_store['#L1'] = revenue_per_store['#L1'].str.replace('$', '')
-revenue_per_store['#L2'] = revenue_per_store['#L2'].str.replace('$', '')
-revenue_per_store['#L4'] = revenue_per_store['#L4'].str.replace('$', '')
-revenue_per_store['#L5'] = revenue_per_store['#L5'].str.replace('$', '')
-revenue_per_store = revenue_per_store.astype(convert_dict)
+
 BM_rev = revenue_per_store['#64'] + revenue_per_store['#19'] + revenue_per_store['#65'] + revenue_per_store['#21'] + \
          revenue_per_store['#16'] + revenue_per_store['#17'] + revenue_per_store['#35']
 LM_rev = revenue_per_store['#L1'] + revenue_per_store['#L2'] + revenue_per_store['#L3'] + revenue_per_store['#L4'] + \
